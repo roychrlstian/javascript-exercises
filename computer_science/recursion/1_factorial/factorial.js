@@ -1,5 +1,8 @@
-const factorial = function() {
+const factorial = function(num) {
+    if(typeof(num) != "number" || num % 1 !== 0 || num < 0) return;
+    if(num == 0) return 1;
 
+    return num * factorial(num - 1);
 };
 
 // Do not edit below this line
