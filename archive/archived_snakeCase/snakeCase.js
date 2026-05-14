@@ -1,8 +1,17 @@
 const snakeCase = function(str) {
-    const valid = 'abcdefghijklmnopqrstuvwxyz ';
-    let ans = str.toLowerCase().split("").filter(s => valid.includes(s)).join("").split(" ").join("_");
+  let normalized = str.replace(/\.\./g, ' ');
 
-    return ans;
+  if (normalized.indexOf(' ') < 0) {
+    normalized = normalized.replace(/([A-Z])/g, ' $1');
+  }
+
+  return normalized
+    .trim()
+    .toLowerCase()
+    .replace(/[,\?\.]/g, '')
+    .replace(/\-/g, ' ')
+    .split(' ')
+    .join('_');
 };
 
 // Do not edit below this line
